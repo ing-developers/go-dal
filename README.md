@@ -155,7 +155,7 @@ if err != nil {
 		Name string `json:"name"`
 	}
 	var products []product
-	err = ToSliceOfStructs(table, &products)
+	err = go_mysql.ToSliceOfStructs(table, &products)
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -174,7 +174,7 @@ if err != nil {
 		Name string `json:"name"`
 	}
 	var productOne product
-	err = ToStruct(table[0], &productOne)
+	err = go_mysql.ToStruct(table[0], &productOne)
 	if err != nil {
 	log.Fatal(err)
 	return
