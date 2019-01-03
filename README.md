@@ -33,7 +33,7 @@ configServerDB := go_mysql.ServerDB{
 	Port:     "3306",
 	DataBase: "test",
 	User:     "root",
-	Password: "302061",
+	Password: "123321",
 }
 mysql, err := Connect(configServerDB)
 if err != nil {
