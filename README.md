@@ -1,20 +1,20 @@
 # go_mysql
 Conexión y operaciones con el motor de base de datos MySql o MariaDB con **Go**
-#1. Instalacion
+## 1. Instalacion
 Para la instalacion de **go_mysql** ejecutar el siguiente comando
 ```bash
 go get -u github.com/ing-developers/go-mysql
 ```
-##Instalar Dependencias
+## Instalar Dependencias
 Las dependencias requeridas para utilizar  **go_mysql** son las siguientes:
-###Utilizar el bat ubicado en el directorio go_mysql
+### Utilizar el bat ubicado en el directorio go_mysql
 1. Dirigirse al directorio de **go_mysql**
 ```bash
 ${GOPATH}\src\github.com\ing-developers\go-mysql`
 ```
 1. Dentro del directorio debe ejecutar el archivo **package.bat**
 
-###Instalar manualmente las dependencias
+### Instalar manualmente las dependencias
 1. https://github.com/go-sql-driver/mysql
 ```bash
 go get -u github.com/go-sql-driver/mysql
@@ -24,8 +24,8 @@ go get -u github.com/go-sql-driver/mysql
 go get -u github.com/ing-developers/go-tools
 ```
 
-#2. Uso
-##Coneccion con el servidor mysql o mariaDB
+# 2. Uso
+## Coneccion con el servidor mysql o mariaDB
 - **Mediante la struct definida**
 ```go
 configServerDB := ServerDB{	
@@ -90,7 +90,7 @@ if mysql.Connected {
 }
 ```
 
-##Obtener filas
+## Obtener filas
 ```go
 ...
 if mysql.Connected {
@@ -143,7 +143,7 @@ if mysql.Connected {
 }
 ...
 ```
-##Conversion a struct o slice de struct
+## Conversion a struct o slice de struct
 **Slice de struct**
 ```go
 table, err := mysql.GetRowsQuery("SELECT * FROM products")
@@ -182,7 +182,7 @@ if err != nil {
 	log.Println("Id: ", productOne.ID, " Name: ", productOne.Name)
 }
 ```
-##Ejecutar consulta SQL
+## Ejecutar consulta SQL
 ```go
 ...
 if mysql.Connected {
@@ -225,7 +225,7 @@ if mysql.Connected {
 }
 ...
 ```
-##Transacciones
+## Transacciones
 ```go
 ...
 if mysql.Connected {
