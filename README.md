@@ -28,7 +28,7 @@ go get -u github.com/ing-developers/go-tools
 ## Coneccion con el servidor mysql o mariaDB
 - **Mediante la struct definida**
 ```go
-configServerDB := ServerDB{	
+configServerDB := go_mysql.ServerDB{	
 	Server:   "localhost",
 	Port:     "3306",
 	DataBase: "test",
@@ -48,7 +48,7 @@ if mysql.Connected {
 ```
 **o especificando el DSN (Data Source Name)**
 ```go
-configServerDB := ServerDB{	
+configServerDB := go_mysql.ServerDB{	
 	DSN:   "usuario:contraseña@tcp(host:puerto)/nombreBD",
 }
 ...
