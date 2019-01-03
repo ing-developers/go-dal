@@ -12,19 +12,19 @@ Las dependencias requeridas para utilizar  **go_mysql** son las siguientes:
 ```bash
 ${GOPATH}\src\github.com\ing-developers\go-mysql`
 ```
-1. Dentro del directorio debe ejecutar el archivo **package.bat**
+2. Dentro del directorio debe ejecutar el archivo **package.bat**
 
 ### Instalar manualmente las dependencias
 1. https://github.com/go-sql-driver/mysql
 ```bash
 go get -u github.com/go-sql-driver/mysql
 ```
-1. Opcional para establecer conexion con archivo JSON https://github.com/ing-developers/go-tools
+2. Opcional para establecer conexion con archivo JSON https://github.com/ing-developers/go-tools
 ```bash
 go get -u github.com/ing-developers/go-tools
 ```
 
-# 2. Uso
+## 2. Uso
 ## Coneccion con el servidor mysql o mariaDB
 - **Mediante la struct definida**
 ```go
