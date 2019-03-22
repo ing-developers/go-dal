@@ -3,7 +3,7 @@ Conexión y operaciones con el motor de base de datos MySql o MariaDB con **Go**
 ## 1. Instalacion
 Para la instalacion de **go_mysql** ejecutar el siguiente comando
 ```bash
-go get -u github.com/ing-developers/go-mysql
+go get -u github.com/ing-developers/go-dal
 ```
 ## Instalar Dependencias
 Las dependencias requeridas para utilizar  **go_mysql** son las siguientes:
