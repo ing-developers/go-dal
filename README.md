@@ -40,6 +40,7 @@ import (
 - **Mediante la struct definida**
 ```go
 configServerDB := go_dal.ServerDB{	
+	Engine: "mysql",
 	Server:   "localhost",
 	Port:     "3306",
 	DataBase: "test",
@@ -60,6 +61,7 @@ if mysql.Connected {
 **o especificando el DSN (Data Source Name)**
 ```go
 configServerDB := go_dal.ServerDB{	
+	Engine: "mysql",
 	DSN:   "usuario:contraseña@tcp(host:puerto)/nombreBD",
 }
 ...
@@ -68,6 +70,7 @@ configServerDB := go_dal.ServerDB{
 **Archivo JSON**
 ```json
 {
+    "engine": "mysql",
 	"server": "localhost",
 	"port": "3306",
 	"data_base": "test",
@@ -78,6 +81,7 @@ configServerDB := go_dal.ServerDB{
 **o especificando el DSN (Data Source Name)**
 ```json
 {
+    "engine": "mysql",
 	"dsn": "usuario:contraseña@tcp(host:puerto)/nombreBD"
 }
 ```

@@ -4,7 +4,7 @@
  * Copyright (c) 2019. All rights reserved.
  */
 
-package go_mysql
+package go_dal
 
 import (
 	"github.com/ing-developers/go-tools"

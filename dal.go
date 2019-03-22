@@ -4,15 +4,15 @@
  * Copyright (c) 2019. All rights reserved.
  */
 
-package go_mysql
+package go_dal
 
 import (
 	"database/sql"
 	"encoding/json"
 )
 
-// MySql modelo para compartir la conexion con el servidor de base de datos entre las funciones existentes
-type MySql struct {
+// DAL modelo para compartir la conexion con el servidor de base de datos entre las funciones existentes
+type DAL struct {
 	db           *sql.DB
 	tx           *sql.Tx
 	stmt         *sql.Stmt
@@ -29,28 +29,28 @@ type Rows map[string]string
 type errors []error
 
 //CloseConnection cierra la conexion actual
-func (m *MySql) CloseConnection() error {
+func (m *DAL) CloseConnection() error {
 	return m.db.Close()
 }
 
 // isTransaction verifica si es una transaccion
-func (m *MySql) isTransaction() bool {
+func (m *DAL) isTransaction() bool {
 	return m.tx != nil
 }
 
 // isSTMT verifica si es una sentencia preparada
-func (m *MySql) isSTMT() bool {
+func (m *DAL) isSTMT() bool {
 	return m.stmt != nil
 }
 
 // BeginTransaction inicia transaccion
-func (m *MySql) BeginTransaction() (err error) {
+func (m *DAL) BeginTransaction() (err error) {
 	m.tx, err = m.db.Begin()
 	return err
 }
 
 // GetRowsSTMT obtiene las filas de una sentencia preparada, la primera vez a ejecutarse se necesitara el query
-func (m *MySql) GetRowsSTMT(query string, values ...interface{}) (table []Rows, err error) {
+func (m *DAL) GetRowsSTMT(query string, values ...interface{}) (table []Rows, err error) {
 	var rows *sql.Rows
 
 	if m.stmt == nil || query != "" {
@@ -70,7 +70,7 @@ func (m *MySql) GetRowsSTMT(query string, values ...interface{}) (table []Rows, 
 }
 
 // GetRowsQuery obtiene las filas de una consulta SQL
-func (m *MySql) GetRowsQuery(query string, values ...interface{}) (table []Rows, err error) {
+func (m *DAL) GetRowsQuery(query string, values ...interface{}) (table []Rows, err error) {
 	var rows *sql.Rows
 
 	if m.isTransaction() {
@@ -87,7 +87,7 @@ func (m *MySql) GetRowsQuery(query string, values ...interface{}) (table []Rows,
 }
 
 // ExecuteSTMT ejecuta una sentencia preparada, la primera vez a ejecutarse se necesitara el query
-func (m *MySql) ExecuteSTMT(query string, values ...interface{}) (err error) {
+func (m *DAL) ExecuteSTMT(query string, values ...interface{}) (err error) {
 	var result sql.Result
 
 	if m.stmt == nil || query != "" {
@@ -109,7 +109,7 @@ func (m *MySql) ExecuteSTMT(query string, values ...interface{}) (err error) {
 }
 
 // ExecuteQuery ejecuta una consulta sql
-func (m *MySql) ExecuteQuery(query string, values ...interface{}) (err error) {
+func (m *DAL) ExecuteQuery(query string, values ...interface{}) (err error) {
 	var result sql.Result
 
 	if m.isTransaction() {
@@ -146,7 +146,7 @@ func ToSliceOfStructs(table []Rows, model interface{}) error {
 }
 
 // FinalizeTransaction finaliza la transaccion activa verificando errores y realiza rollback si es el caso
-func (m *MySql) FinalizeTransaction() (wasCommit bool, err error) {
+func (m *DAL) FinalizeTransaction() (wasCommit bool, err error) {
 	if len(m.Errors) > 0 {
 		err = m.tx.Rollback()
 	} else {
