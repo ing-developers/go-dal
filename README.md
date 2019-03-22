@@ -26,6 +26,17 @@ go get -u github.com/ing-developers/go-tools
 
 ## 2. Uso
 ## Coneccion con el servidor mysql o mariaDB
+En donde se deseé establecer la conexion con el motor de base de datos, importar la libreria que manejara dicha conexion.
+
+Por ejemplo, con mysql o mariaDB
+
+```go
+import (	
+	// LIBRERIA PARA CONEXIONES MYSQL
+	_ "github.com/go-sql-driver/mysql"
+)
+```
+
 - **Mediante la struct definida**
 ```go
 configServerDB := go_mysql.ServerDB{	

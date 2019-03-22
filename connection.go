@@ -7,8 +7,6 @@ package go_mysql
 
 import (
 	"database/sql"
-	// LIBRERIA PARA CONEXIONES MYSQL
-	_ "github.com/go-sql-driver/mysql"
 )
 
 // ServerDB modelo para la conexion con la base de datos

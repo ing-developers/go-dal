@@ -9,6 +9,8 @@ package go_mysql
 import (
 	"github.com/ing-developers/go-tools"
 	"testing"
+	// LIBRERIA PARA CONEXIONES MYSQL
+	_ "github.com/go-sql-driver/mysql"
 )
 
 func TestIsConnected(t *testing.T) {
