@@ -1,14 +1,14 @@
-# go_mysql
-Conexión y operaciones con el motor de base de datos MySql o MariaDB con **Go**
+# go_dal
+Conexión y operaciones con motores de base de datos con **Go**
 ## 1. Instalacion
-Para la instalacion de **go_mysql** ejecutar el siguiente comando
+Para la instalacion de **go_dal** ejecutar el siguiente comando
 ```bash
 go get -u github.com/ing-developers/go-dal
 ```
 ## Instalar Dependencias
-Las dependencias requeridas para utilizar  **go_mysql** son las siguientes:
-### Utilizar el bat ubicado en el directorio go_mysql
-1. Dirigirse al directorio de **go_mysql**
+Las dependencias requeridas para utilizar  **go_dal** son las siguientes:
+### Utilizar el bat ubicado en el directorio go_dal
+1. Dirigirse al directorio de **go_dal**
 ```bash
 ${GOPATH}\src\github.com\ing-developers\go-mysql`
 ```
@@ -25,7 +25,7 @@ go get -u github.com/ing-developers/go-tools
 ```
 
 ## 2. Uso
-## Coneccion con el servidor mysql o mariaDB
+## Coneccion con el servidor de base de datos
 En donde se deseé establecer la conexion con el motor de base de datos, importar la libreria que manejara dicha conexion.
 
 Por ejemplo, con mysql o mariaDB
@@ -39,7 +39,7 @@ import (
 
 - **Mediante la struct definida**
 ```go
-configServerDB := go_mysql.ServerDB{	
+configServerDB := go_dal.ServerDB{	
 	Server:   "localhost",
 	Port:     "3306",
 	DataBase: "test",
@@ -59,7 +59,7 @@ if mysql.Connected {
 ```
 **o especificando el DSN (Data Source Name)**
 ```go
-configServerDB := go_mysql.ServerDB{	
+configServerDB := go_dal.ServerDB{	
 	DSN:   "usuario:contraseña@tcp(host:puerto)/nombreBD",
 }
 ...
@@ -83,7 +83,7 @@ configServerDB := go_mysql.ServerDB{
 ```
 **Archivo de conexion**
 ```go
-var configServerDB go_mysql.ServerDB
+var configServerDB go_dal.ServerDB
 err := tools.Decode("./serverDB.json", &configServerDB)
 if err != nil {
 	log.Fatal(err)
@@ -166,7 +166,7 @@ if err != nil {
 		Name string `json:"name"`
 	}
 	var products []product
-	err = go_mysql.ToSliceOfStructs(table, &products)
+	err = go_dal.ToSliceOfStructs(table, &products)
 	if err != nil {
 		log.Fatal(err)
 		return
@@ -185,7 +185,7 @@ if err != nil {
 		Name string `json:"name"`
 	}
 	var productOne product
-	err = go_mysql.ToStruct(table[0], &productOne)
+	err = go_dal.ToStruct(table[0], &productOne)
 	if err != nil {
 	log.Fatal(err)
 	return
