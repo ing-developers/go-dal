@@ -146,14 +146,13 @@ func ToSliceOfStructs(table []Rows, model interface{}) error {
 }
 
 // FinalizeTransaction finaliza la transaccion activa verificando errores y realiza rollback si es el caso
-func (m *DAL) FinalizeTransaction() (wasCommit bool, err error) {
+func (m *DAL) FinalizeTransaction() (err error) {
 	if len(m.Errors) > 0 {
 		err = m.tx.Rollback()
 	} else {
-		wasCommit = true
 		err = m.tx.Commit()
 	}
-	return wasCommit, err
+	return err
 }
 
 // rowsToMap genera maps de resultado de consulta sql
